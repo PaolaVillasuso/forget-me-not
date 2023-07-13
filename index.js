@@ -39,7 +39,7 @@ function showCity(event) {
   let city = document.querySelector("#city-input").value;
   backgroundCity(city);
 }
-//let cityDisplay = document.querySelector("#current-city");
+
 let form = document.querySelector("#form-city");
 form.addEventListener("submit", showCity);
 
