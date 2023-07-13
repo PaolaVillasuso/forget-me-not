@@ -1,0 +1,21 @@
+.container {
+  width: 500px;
+  margin: 50px auto;
+  border-radius: 10px;
+}
+.img-emoji {
+  font-size: 40px;
+}
+.card-text {
+  border: 1px solid gray;
+}
+input.search {
+  border-radius: 10px;
+}
+
+#list-one {
+  list-style-type: none;
+}
+#number {
+  font-size: 40px;
+}
