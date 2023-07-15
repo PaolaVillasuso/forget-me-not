@@ -1,5 +1,3 @@
-import "./styles.css";
-
 let date = document.querySelector("#current-time");
 
 let currentDate = new Date();
