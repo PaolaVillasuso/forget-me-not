@@ -17,6 +17,7 @@ function formatTime(timestamp) {
 }
 
 function callTemperature(response) {
+  let timeElement = document.querySelector("#current-time");
   document.querySelector("#current-city").innerHTML = response.data.name;
   document.querySelector("#number").innerHTML = Math.round(
     response.data.main.temp
@@ -28,7 +29,7 @@ function callTemperature(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
-  let timeElement = document.querySelector("#current-time");
+
   timeElement.innerHTML = formatTime(response.data.dt * 1000);
   console.log(response.data);
 }
