@@ -1,20 +1,20 @@
-let date = document.querySelector("#current-time");
+function formatTime(timestamp) {
+  let currentDate = new Date();
+  let hours = currentDate.getHours();
+  let minutes = currentDate.getMinutes();
 
-let currentDate = new Date();
-let hours = currentDate.getHours();
-let minutes = currentDate.getMinutes();
-let day = currentDate.getDay();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
-date.innerHTML = `${days[day]} ${hours}:${minutes}`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[currentDate.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
 
 function callTemperature(response) {
   document.querySelector("#current-city").innerHTML = response.data.name;
@@ -28,6 +28,8 @@ function callTemperature(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  let timeElement = document.querySelector("#current-time");
+  timeElement.innerHTML = formatTime(response.data.dt * 1000);
   console.log(response.data);
 }
 

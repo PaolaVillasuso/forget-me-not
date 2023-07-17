@@ -19,6 +19,6 @@ input.search {
 #number {
   font-size: 40px;
 }
-li {
+li::first-letter {
   text-transform: capitalize;
 }
