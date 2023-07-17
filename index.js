@@ -23,6 +23,12 @@ function callTemperature(response) {
   );
   document.querySelector("#current-humidity").innerHTML =
     response.data.main.humidity;
+  document.querySelector("#condition").innerHTML =
+    response.data.weather[0].description;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  console.log(response.data);
 }
 
 function backgroundCity(city) {
