@@ -22,3 +22,12 @@ input.search {
 li::first-letter {
   text-transform: capitalize;
 }
+
+.weather-information.active {
+  color: black;
+  cursor: default;
+}
+
+.weather-information.active:hover {
+  text-decoration: none;
+}

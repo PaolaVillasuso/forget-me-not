@@ -20,10 +20,10 @@ function callTemperature(response) {
   console.log(response.data);
   let timeElement = document.querySelector("#current-time");
   let iconElement = document.querySelector("#current-emoji-temperature");
+
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#current-city").innerHTML = response.data.city;
-  document.querySelector("#number").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+  document.querySelector("#number").innerHTML = Math.round(celsiusTemperature);
   document.querySelector("#current-humidity").innerHTML =
     response.data.temperature.humidity;
   document.querySelector("#condition").innerHTML =
@@ -52,8 +52,6 @@ function showCity(event) {
 let form = document.querySelector("#form-city");
 form.addEventListener("submit", showCity);
 
-backgroundCity("Ljubljana");
-
 function searchLocation(position) {
   let apiKey = "6a9a43e787b2d5cdc0af18644o21t03e";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coordinates.longitude}&lat=${position.coordinates.latitude}&key=${apiKey}&units=metric`;
@@ -67,3 +65,26 @@ function getCurrent(event) {
 
 let currentLocation = document.querySelector("#current-location-input");
 currentLocation.addEventListener("click", getCurrent);
+
+let celsiusTemperature = null;
+
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElemnt = document.querySelector("#number");
+  let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElemnt.innerHTML = Math.round(farenheitTemperature);
+}
+
+function displaycelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElemnt = document.querySelector("#number");
+  temperatureElemnt.innerHTML = Math.round(celsiusTemperature);
+}
+
+let farenheitLink = document.querySelector("#farenheit");
+farenheitLink.addEventListener("click", displayFarenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", displaycelsiusTemperature);
+
+backgroundCity("Ljubljana");
