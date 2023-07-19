@@ -33,7 +33,8 @@ function callTemperature(response) {
   );
 
   timeElement.innerHTML = formatTime(response.data.time * 1000);
-  iconElement.setAttribute("src", response.data.conditon.icon_url);
+  iconElement.setAttribute("src", response.data.condition.icon_url);
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 
 function backgroundCity(city) {
