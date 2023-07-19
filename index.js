@@ -17,27 +17,26 @@ function formatTime(timestamp) {
 }
 
 function callTemperature(response) {
+  console.log(response.data);
   let timeElement = document.querySelector("#current-time");
-  document.querySelector("#current-city").innerHTML = response.data.name;
+  document.querySelector("#current-city").innerHTML = response.data.city;
   document.querySelector("#number").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
   document.querySelector("#current-humidity").innerHTML =
-    response.data.main.humidity;
+    response.data.temperature.humidity;
   document.querySelector("#condition").innerHTML =
-    response.data.weather[0].description;
+    response.data.condition.description;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
 
-  timeElement.innerHTML = formatTime(response.data.dt * 1000);
-  console.log(response.data);
+  timeElement.innerHTML = formatTime(response.data.time * 1000);
 }
 
 function backgroundCity(city) {
-  let apiKey = "1fd8093fa5ff12d796d7de756cc9d6b9";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
+  let apiKey = "6a9a43e787b2d5cdc0af18644o21t03e";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(callTemperature);
 }
 
@@ -53,8 +52,8 @@ form.addEventListener("submit", showCity);
 backgroundCity("Ljubljana");
 
 function searchLocation(position) {
-  let apiKey = "1fd8093fa5ff12d796d7de756cc9d6b9";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  let apiKey = "6a9a43e787b2d5cdc0af18644o21t03e";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coordinates.longitude}&lat=${position.coordinates.latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(callTemperature);
 }
 
