@@ -19,6 +19,7 @@ function formatTime(timestamp) {
 function callTemperature(response) {
   console.log(response.data);
   let timeElement = document.querySelector("#current-time");
+  let iconElement = document.querySelector("#current-emoji-temperature");
   document.querySelector("#current-city").innerHTML = response.data.city;
   document.querySelector("#number").innerHTML = Math.round(
     response.data.temperature.current
@@ -32,6 +33,7 @@ function callTemperature(response) {
   );
 
   timeElement.innerHTML = formatTime(response.data.time * 1000);
+  iconElement.setAttribute("src", response.data.conditon.icon_url);
 }
 
 function backgroundCity(city) {
