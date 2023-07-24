@@ -23,11 +23,13 @@ li::first-letter {
   text-transform: capitalize;
 }
 
-.weather-information.active {
+.active {
   color: black;
+  cursor: default;
+  text-decoration: none;
   cursor: default;
 }
 
-.weather-information.active:hover {
+.active:hover {
   text-decoration: none;
 }
