@@ -16,10 +16,12 @@ function formatTime(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Tuesd", "Wed", "Thu", "Fri"];
+
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
@@ -43,6 +45,14 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "6a9a43e787b2d5cdc0af18644o21t03e";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function callTemperature(response) {
   console.log(response.data);
   let timeElement = document.querySelector("#current-time");
@@ -62,6 +72,8 @@ function callTemperature(response) {
   timeElement.innerHTML = formatTime(response.data.time * 1000);
   iconElement.setAttribute("src", response.data.condition.icon_url);
   iconElement.setAttribute("alt", response.data.condition.description);
+
+  getForecast(response.data.coordinates);
 }
 
 function backgroundCity(city) {
@@ -119,4 +131,3 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displaycelsiusTemperature);
 
 backgroundCity("Ljubljana");
-displayForecast();
