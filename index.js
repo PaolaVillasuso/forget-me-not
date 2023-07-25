@@ -16,6 +16,33 @@ function formatTime(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tuesd", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col-2">
+              <div class=weather-forecast-date>${days}</div>  
+                <img
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+                  alt=""
+                  width="36"
+                />
+              <div class="weather-forecast-temp">
+                <span class="weather-forecast-temp-max">18C°</span>
+                <span class="weather-forecast-temp-min">12C°</span>
+              </div>
+              </div>
+           
+            `;
+  });
+  forecastHTML = ` </div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function callTemperature(response) {
   console.log(response.data);
   let timeElement = document.querySelector("#current-time");
@@ -92,3 +119,4 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displaycelsiusTemperature);
 
 backgroundCity("Ljubljana");
+displayForecast();
