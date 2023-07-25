@@ -19,7 +19,7 @@ input.search {
 #number {
   font-size: 40px;
 }
-li::first-letter {
+li:first-letter {
   text-transform: capitalize;
 }
 
@@ -32,4 +32,11 @@ li::first-letter {
 
 .active:hover {
   text-decoration: none;
+}
+.weather-forecast {
+  text-align: center;
+  margin-top: 20px;
+}
+.weather-forecast-temp {
+  font-size: 20px;
 }
