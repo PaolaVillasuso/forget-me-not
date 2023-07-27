@@ -38,5 +38,10 @@ li:first-letter {
   margin-top: 20px;
 }
 .weather-forecast-temp {
-  font-size: 20px;
+  font-size: 12px;
+}
+
+#forecast {
+  text-align: center;
+  margin-left: 10px;
 }
