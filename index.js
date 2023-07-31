@@ -37,11 +37,9 @@ function displayForecast(response) {
                 forecastDay.time
               )}</div>  
                 <img
-                  src=´http://shecodes-assets.s3.amazonaws.com/api/weather/icon/${
-                    forecastDay.condition.icon
-                  }.png´
+                  src="${forecastDay.condition.icon_url}"
                   alt="${forecastDay.condition.description}"
-                  width="10"
+                  width="50"
                 />
               <div class="weather-forecast-temp">
                 <span class="weather-forecast-temp-max">${Math.round(
