@@ -23,16 +23,6 @@ li:first-letter {
   text-transform: capitalize;
 }
 
-.active {
-  color: black;
-  cursor: default;
-  text-decoration: none;
-  cursor: default;
-}
-
-.active:hover {
-  text-decoration: none;
-}
 .weather-forecast {
   text-align: center;
   margin-top: 20px;
